@@ -1,3 +1,14 @@
+import Vue from "vue";
+import VueRouter from "vue-router";
+import store from "../store";
+
+import guest from "./middleware/guest";
+import auth from "./middleware/auth";
+import isSubscribed from "./middleware/isSubscribed";
+import middlewarePipeline from "./middlewarePipeline";
+
+Vue.use(VueRouter);
+
 import DashboardLayout from "@/pages/Dashboard/Layout/DashboardLayout.vue";
 import AuthLayout from "@/pages/Dashboard/Pages/AuthLayout.vue";
 
@@ -210,12 +221,18 @@ let authPages = {
     {
       path: "/login",
       name: "Login",
-      component: Login
+      component: Login,
+      meta: {
+        middleware: [guest]
+      }
     },
     {
       path: "/register",
       name: "Register",
-      component: Register
+      component: Register,
+      meta: {
+        middleware: [guest]
+      }
     },
     {
       path: "/pricing",
@@ -269,4 +286,34 @@ const routes = [
   }
 ];
 
-export default routes;
+const router = new VueRouter({
+  routes,
+  scrollBehavior: to => {
+    if (to.hash) {
+      return { selector: to.hash };
+    } else {
+      return { x: 0, y: 0 };
+    }
+  },
+  linkExactActiveClass: "nav-item active"
+});
+
+router.beforeEach((to, from, next) => {
+  if (!to.meta.middleware) {
+    return next();
+  }
+  const middleware = to.meta.middleware;
+
+  const context = {
+    to,
+    from,
+    next,
+    store
+  };
+  return middleware[0]({
+    ...context,
+    next: middlewarePipeline(context, middleware, 1)
+  });
+});
+
+export default router;

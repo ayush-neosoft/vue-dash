@@ -1,7 +1,12 @@
 import DropDown from "./components/Dropdown.vue";
 import { ValidationProvider } from "vee-validate";
 import { ValidationObserver } from "vee-validate";
-import { CollapseTransition, SlideYDownTransition, FadeTransition, ZoomCenterTransition } from "../node_modules/vue2-transitions";
+import {
+  CollapseTransition,
+  SlideYDownTransition,
+  FadeTransition,
+  ZoomCenterTransition
+} from "../node_modules/vue2-transitions";
 /**
  * You can register global components here and use them as a plugin in your main Vue instance
  */

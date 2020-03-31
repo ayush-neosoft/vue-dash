@@ -40,9 +40,13 @@
         <md-field class="md-form-group" slot="inputs">
           <md-icon>lock_outline</md-icon>
           <label>Password...</label>
-          <md-input v-model="password"></md-input>
+          <md-input v-model="password" type="password"></md-input>
         </md-field>
-        <md-button slot="footer" class="md-simple md-success md-lg">
+        <md-button
+          @click="doLogin()"
+          slot="footer"
+          class="md-simple md-success md-lg"
+        >
           Lets Go
         </md-button>
       </login-card>
@@ -51,16 +55,30 @@
 </template>
 <script>
 import { LoginCard } from "@/components";
+import Auth from "@/api/Auth";
 export default {
   components: {
     LoginCard
   },
   data() {
     return {
-      firstname: null,
       email: null,
       password: null
     };
+  },
+  methods: {
+    doLogin() {
+      Auth.login({ email: this.email, password: this.password })
+        .then(response => {
+          localStorage.setItem("token", response.data.access_token); // set token
+          this.$store.dispatch("auth_vuex/set_auth", true);
+          this.$store.dispatch("auth_vuex/set_user", response.data.user); // set user
+          this.$router.push("/"); // redirect user
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>

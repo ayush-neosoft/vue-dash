@@ -39,7 +39,17 @@
             </md-button>
             <h4 class="mt-3">or be classical</h4>
           </div>
-          <md-field
+          <md-field class="md-form-group" slot="inputs">
+            <md-icon>email</md-icon>
+            <label>Email...</label>
+            <md-input v-model="email" type="email"></md-input>
+          </md-field>
+          <md-field class="md-form-group" slot="inputs">
+            <md-icon>lock_outline</md-icon>
+            <label>Password...</label>
+            <md-input v-model="password" type="password"></md-input>
+          </md-field>
+          <!-- <md-field
             class="md-form-group"
             v-for="item in inputs"
             :key="item.name"
@@ -47,12 +57,15 @@
             <md-icon>{{ item.icon }}</md-icon>
             <label>{{ item.name }}</label>
             <md-input :v-model="item.nameAttr" :type="item.type"></md-input>
-          </md-field>
-          <md-checkbox v-model="boolean"
+          </md-field> -->
+          <md-checkbox v-model="tnc"
             >I agree to the <a>terms and conditions</a>.</md-checkbox
           >
           <div class="button-container">
-            <md-button href class="md-success md-round mt-4" slot="footer"
+            <md-button
+              @click="doRegister"
+              class="md-success md-round mt-4"
+              slot="footer"
               >Get Started</md-button
             >
           </div>
@@ -63,6 +76,7 @@
 </template>
 <script>
 import { SignupCard } from "@/components";
+import Auth from "@/api/Auth";
 export default {
   components: {
     SignupCard
@@ -70,7 +84,7 @@ export default {
   data() {
     return {
       // firstname: null,
-      boolean: false,
+      tnc: false,
       email: null,
       password: null,
       contentLeft: [
@@ -97,30 +111,44 @@ export default {
           description:
             "There is also a Fully Customizable CMS Admin Dashboard for this product."
         }
-      ],
-      inputs: [
-        // {
-        //   icon: "face",
-        //   name: "First Name...",
-        //   nameAttr: "firstname",
-        //   type: "text"
-        // },
-
-        {
-          icon: "email",
-          name: "Email...",
-          nameAttr: "email",
-          type: "email"
-        },
-
-        {
-          icon: "lock_outline",
-          name: "Password..",
-          nameAttr: "password",
-          type: "password"
-        }
       ]
+      // inputs: [
+      //   {
+      //     icon: "face",
+      //     name: "First Name...",
+      //     nameAttr: "firstname",
+      //     type: "text"
+      //   },
+
+      //   {
+      //     icon: "email",
+      //     name: "Email...",
+      //     nameAttr: "email",
+      //     type: "email"
+      //   },
+
+      //   {
+      //     icon: "lock_outline",
+      //     name: "Password..",
+      //     nameAttr: "password",
+      //     type: "password"
+      //   }
+      // ]
     };
+  },
+  methods: {
+    doRegister() {
+      Auth.register({ email: this.email, password: this.password })
+        .then(response => {
+          localStorage.setItem("token", response.data.access_token); // set token
+          this.$store.dispatch("auth_vuex/set_auth", true);
+          this.$store.dispatch("auth_vuex/set_user", response.data.user); // set user
+          this.$router.push("/"); // redirect user
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>

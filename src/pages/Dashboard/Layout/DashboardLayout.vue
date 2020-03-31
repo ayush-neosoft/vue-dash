@@ -310,7 +310,7 @@ export default {
     ContentFooter,
     FixedPlugin,
     MobileMenu,
-    UserMenu,
+    UserMenu
   },
   data() {
     return {
