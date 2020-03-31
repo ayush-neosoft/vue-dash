@@ -127,6 +127,7 @@ export default {
       let images = {
         Pricing: "./img/bg-pricing.jpg",
         Login: "./img/login.jpg",
+        RegisterLicense: "./img/login.jpg",
         Register: "./img/register.jpg",
         Lock: "./img/lock.jpg"
       };

@@ -12,6 +12,7 @@ import RtlSupport from "@/pages/Dashboard/Pages/RtlSupport.vue";
 import Welcome from "@/pages/Dashboard/Pages/Welcome.vue";
 import Login from "@/pages/Dashboard/Pages/Login.vue";
 import Register from "@/pages/Dashboard/Pages/Register.vue";
+import RegisterLicense from "@/pages/Dashboard/Pages/RegisterLicense.vue";
 import Lock from "@/pages/Dashboard/Pages/Lock.vue";
 
 // Components pages
@@ -216,6 +217,11 @@ let authPages = {
       path: "/register",
       name: "Register",
       component: Register
+    },
+    {
+      path: "/register-license",
+      name: "RegisterLicense",
+      component: RegisterLicense
     },
     {
       path: "/pricing",

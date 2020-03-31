@@ -17,9 +17,7 @@
             </div>
             <div class="description">
               <h4 class="info-title">{{ item.title }}</h4>
-              <p class="description">
-                {{ item.description }}
-              </p>
+              <p class="description">{{ item.description }}</p>
             </div>
           </div>
         </div>
@@ -48,11 +46,15 @@
             <label>{{ item.name }}</label>
             <md-input :v-model="item.nameAttr" :type="item.type"></md-input>
           </md-field>
-          <md-checkbox v-model="boolean"
-            >I agree to the <a>terms and conditions</a>.</md-checkbox
-          >
+          <md-checkbox v-model="boolean">
+            I agree to the
+            <a>terms and conditions</a>.
+          </md-checkbox>
           <div class="button-container">
-            <md-button href class="md-success md-round mt-4" slot="footer"
+            <md-button
+              href="#/register-license"
+              class="md-success md-round mt-4"
+              slot="footer"
               >Get Started</md-button
             >
           </div>
