@@ -4,19 +4,14 @@
       <md-card>
         <md-card-header class="md-card-header-icon md-card-header-green">
           <div class="card-icon">
-            <md-icon>email</md-icon>
+            <md-icon>card_membership</md-icon>
           </div>
           <!-- <h4 class="title">User Account Info</h4> -->
         </md-card-header>
         <br>
         <md-card-content>
           <div class="md-layout">
-            <InputText label="Old Email" title="old_email" inputtype="email" v-on:input="inputForm1" />
-          </div>
-          <br>
-          <div class="md-layout">
-            <InputText label="New Email" title="new_email" inputtype="email" @input="inputForm1" />
-            <InputText label="Confirm Email" title="confirm_email" inputtype="email" @input="inputForm1" />
+            <InputText label="Transfer Email Address" title="transfer_email" type="email" v-on:input="inputForm1" />
           </div>
         </md-card-content>
 

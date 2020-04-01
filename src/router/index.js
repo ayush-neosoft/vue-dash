@@ -144,6 +144,10 @@ let AccountMenu = {
       path: "change-password", name: "Change Password",
       component: () => import('@/pages/Dashboard/Account/ChangePassword')
     },
+    {
+      path: "transfer-license", name: "Transfer License",
+      component: () => import('@/pages/Dashboard/Account/TransferLicense')
+    },
     // {
     //   path: "validation",
     //   name: "Validation Forms",
