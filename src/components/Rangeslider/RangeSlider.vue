@@ -4,8 +4,9 @@
       class="ui-slider"
       tabindex="0"
       ref="slider"
-      :class="{ min: value === 0, max: value === 100, dragging: dragging }"
+      :class="{ min: value === 0, max: value === 50, dragging: dragging }"
       @mousedown="sliderClick"
+      @click="$emit('child-data', { value: $data.value, title: title })"
       @keydown.left.prevent="decrement"
       @keydown.right.prevent="increment"
     >

@@ -8,9 +8,15 @@
           class="md-layout-item md-size-100 md-medium-size-100 md-small-size-100"
         >
           <div style="margin-bottom:50px">
-            <range-slider title="Number of licenses"></range-slider>
+            <range-slider
+              title="Number of licenses"
+              v-on:child-data="childData"
+            ></range-slider>
             <br />
-            <range-slider title="License duration"></range-slider>
+            <range-slider
+              title="License duration"
+              v-on:child-data="childData"
+            ></range-slider>
           </div>
           <div>
             <b>Your Estimation</b>
@@ -53,6 +59,11 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    childData: function(data) {
+      console.log("data----", data);
+    }
   }
 };
 </script>
