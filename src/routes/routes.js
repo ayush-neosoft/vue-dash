@@ -263,7 +263,7 @@ let authPages = {
       component: Register
     },
     {
-      path: "/register-license",
+      path: "/checkout",
       name: "RegisterLicense",
       component: RegisterLicense
     },

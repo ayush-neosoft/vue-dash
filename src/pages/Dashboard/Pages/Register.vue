@@ -52,7 +52,7 @@
           </md-checkbox>
           <div class="button-container">
             <md-button
-              href="#/register-license"
+              href="#/checkout"
               class="md-success md-round mt-4"
               slot="footer"
               >Get Started</md-button

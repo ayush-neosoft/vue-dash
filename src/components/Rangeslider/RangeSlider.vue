@@ -182,7 +182,7 @@ export default {
   position: absolute;
   top: 0;
   height: 3px;
-  background-color: #f44336;
+  background-color: #4caf50;
 }
 
 .ui-slider-thumb-container {
@@ -203,7 +203,7 @@ export default {
   justify-content: center;
   width: 16px;
   height: 16px;
-  background-color: #f44336;
+  background-color: #4caf50;
   border-radius: 50%;
   transition-property: transform;
   transition-duration: 0.2s;
@@ -217,7 +217,7 @@ export default {
   top: 0;
   left: 0;
   border-radius: 50%;
-  background-color: #f44336;
+  background-color: #4caf50;
   transition: transform 0.2s ease;
   transform: scale(0);
 }

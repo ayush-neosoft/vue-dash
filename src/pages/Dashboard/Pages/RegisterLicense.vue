@@ -19,29 +19,42 @@
             ></range-slider>
           </div>
           <div>
-            <b>Your Estimation</b>
+            <p class="dark-grey">Your Estimation</p>
             <div
               class="md-card-actions md-alignment-space-between estimate-card"
             >
               <div class="price">
-                <h4 class="subCategory">5 Licenses for 2 years</h4>
+                <h4 class="subCategory grey">
+                  {{ license }} Licenses for {{ year }} years
+                </h4>
               </div>
               <div class="stats">
-                <p class="category">R1,000.00</p>
+                <p class="category grey">R{{ licenseValue }}</p>
               </div>
             </div>
             <div
               class="md-card-actions md-alignment-space-between estimate-card"
             >
               <div class="price">
-                <h4 class="subCategory">Discount</h4>
+                <h4 class="subCategory grey">Discount</h4>
               </div>
               <div class="stats">
-                <p class="category">-R100.00</p>
+                <p class="category grey">-R{{ discount }}</p>
+              </div>
+            </div>
+            <hr />
+            <div
+              class="md-card-actions md-alignment-space-between estimate-card"
+            >
+              <div class="price">
+                <h4 class="subCategory dark-grey">Total</h4>
+              </div>
+              <div class="stats">
+                <p class="category dark-grey">R{{ total }}</p>
               </div>
             </div>
           </div>
-          <div class="button-container right">
+          <div class="button-container">
             <md-button class="md-success md-round mt-4" slot="footer">
               Continue
             </md-button>
@@ -58,11 +71,23 @@ export default {
     RangeSlider
   },
   data() {
-    return {};
+    return {
+      license: 0,
+      licenseValue: 0,
+      year: 0,
+      yearValue: 0,
+      total: 0,
+      discount: 0
+    };
   },
   methods: {
     childData: function(data) {
-      console.log("data----", data);
+      this.license =
+        data.title === "Number of licenses" ? data.value : this.license;
+      this.licenseValue = this.license;
+      this.year = data.title === "License duration" ? data.value : this.year;
+      this.yearValue = this.year;
+      this.total = this.licenseValue;
     }
   }
 };
@@ -86,5 +111,17 @@ export default {
 
 .estimate-card {
   padding: 5px 0px;
+}
+
+.button-container {
+  justify-content: flex-end;
+}
+
+.dark-gery {
+  color: #3c4858;
+}
+
+.grey {
+  color: #999999;
 }
 </style>
