@@ -11,12 +11,12 @@
         <br>
         <md-card-content>
           <div class="md-layout">
-            <InputText label="Old Password" title="old_password" type="password" v-on:input="inputForm1" />
+            <InputText label="Old Password" title="old_password" inputtype="password" v-on:input="inputForm1" />
           </div>
           <br>
           <div class="md-layout">
-            <InputText label="New Password" title="new_password" type="password" @input="inputForm1" />
-            <InputText label="Confirm Password" title="confirm_password" type="password" @input="inputForm1" />
+            <InputText label="New Password" title="new_password" inputtype="password" @input="inputForm1" />
+            <InputText label="Confirm Password" title="confirm_password" inputtype="password" @input="inputForm1" />
           </div>
         </md-card-content>
 
@@ -73,6 +73,7 @@ export default {
     },
     submitForm1() {
       console.log(this.user_account_info);
+      this.$router.push('/account');
     }
   },
 };

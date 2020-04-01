@@ -43,13 +43,13 @@
 
         <md-card-content>
           <div class="md-layout">
-            <InputText label="Training Manager" title="training_manager" @input="inputForm1" />
-            <InputText label="Licence Expiry Date" title="license_exp_date" @input="inputForm1" />
+            <InputText label="Training Manager" title="training_manager" @input="inputForm2" />
+            <InputText label="Licence Expiry Date" title="license_exp_date" @input="inputForm2" />
           </div>
         </md-card-content>
 
         <md-card-actions md-alignment="left">
-          <md-button class="md-success">Submit</md-button>
+          <md-button class="md-success" @click="submitForm2">Submit</md-button>
         </md-card-actions>
       </md-card>
     </div>
@@ -62,19 +62,25 @@
           </div>
           <h4 class="title">Account Management</h4>
         </md-card-header>
-
+        <br>
         <md-card-content>
           <div class="md-layout">
             <div class="md-layout-item md-size-10">
             </div>
             <div class="md-layout-item md-size-30">
-              <md-button class="md-raised md-primary">Change Email Address</md-button>
+              <md-button 
+                class="md-raised md-primary" 
+                @click="$router.push({ name: 'Change Email'})">Change Email Address</md-button>
             </div>
             <div class="md-layout-item md-size-30">
-              <md-button class="md-raised md-primary">Change Password</md-button>
+              <md-button 
+                class="md-raised md-primary"
+                @click="$router.push({ name: 'Change Password'})">Change Password</md-button>
             </div>
             <div class="md-layout-item md-size-30">
-              <md-button class="md-raised md-primary">Transfer License</md-button>
+              <md-button 
+                class="md-raised md-primary"
+                @click="$router.push({ name: 'Transfer License'})">Transfer License</md-button>
             </div>
           </div>
         </md-card-content>
@@ -91,6 +97,7 @@ export default {
   data() {
     return {
       user_account_info: {},
+      billing: {},
       layout1: null,
       layout2: null,
       layout3: null,
@@ -128,7 +135,15 @@ export default {
     },
     submitForm1() {
       console.log(this.user_account_info);
-    }
+    },
+    inputForm2(data) {
+      let obj = {};
+      obj[data.key] = data.value;
+      this.billing = Object.assign(this.billing, obj);
+    },
+    submitForm2() {
+      console.log(this.billing);
+    },
   },
 };
 </script>

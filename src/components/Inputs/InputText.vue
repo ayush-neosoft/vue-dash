@@ -3,7 +3,7 @@
     <md-field>
       <label>{{ label }}</label>
       <md-input 
-        :type="type"
+        :type="inputtype"
         :value="value"
         @input="$emit('input', { key: title, value: $event })"
       />
@@ -17,7 +17,7 @@
 <script>
 export default {
   props: {
-    type : { type: String , required: true, default: 'text' },
+    inputtype : { type: String , required: false, default: 'text' },
     title : { type: String , required: true, default: '' },
     value : { type: String , required: false, default: '' },
     label: { type: String , required: true, default: '' },
