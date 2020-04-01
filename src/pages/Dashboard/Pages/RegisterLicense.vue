@@ -55,7 +55,11 @@
             </div>
           </div>
           <div class="button-container">
-            <md-button class="md-success md-round mt-4" slot="footer">
+            <md-button
+              class="md-success md-round mt-4"
+              href="/#/dashboard-plan"
+              slot="footer"
+            >
               Continue
             </md-button>
           </div>

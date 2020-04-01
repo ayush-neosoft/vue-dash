@@ -13,6 +13,7 @@ import Welcome from "@/pages/Dashboard/Pages/Welcome.vue";
 import Login from "@/pages/Dashboard/Pages/Login.vue";
 import Register from "@/pages/Dashboard/Pages/Register.vue";
 import RegisterLicense from "@/pages/Dashboard/Pages/RegisterLicense.vue";
+import DashboardPlan from "@/pages/Dashboard/Pages/DashboardPlan.vue";
 import Lock from "@/pages/Dashboard/Pages/Lock.vue";
 
 // Components pages
@@ -267,6 +268,11 @@ let authPages = {
       name: "RegisterLicense",
       component: RegisterLicense
     },
+    {
+      path: "/dashboard-plan",
+      name: "DashboardPlan",
+      component: DashboardPlan
+    }
     // {
     //   path: "/pricing",
     //   name: "Pricing",
