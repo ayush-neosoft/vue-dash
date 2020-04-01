@@ -127,6 +127,35 @@ let formsMenu = {
     }
   ]
 };
+let AccountMenu = {
+  path: "/account",
+  component: DashboardLayout,
+  name: "Account",
+  children: [
+    {
+      path: "/", name: "Account",
+      component: () => import('@/pages/Dashboard/Account/Index')
+    },
+    {
+      path: "change-email", name: "Change Email",
+      component: () => import('@/pages/Dashboard/Account/ChangeEmail')
+    },
+    {
+      path: "change-password", name: "Change Password",
+      component: () => import('@/pages/Dashboard/Account/ChangePassword')
+    },
+    // {
+    //   path: "validation",
+    //   name: "Validation Forms",
+    //   components: { default: ValidationForms }
+    // },
+    // {
+    //   path: "wizard",
+    //   name: "Wizard",
+    //   components: { default: Wizard }
+    // }
+  ]
+};
 
 let tablesMenu = {
   path: "/table-list",
@@ -192,19 +221,34 @@ let pagesMenu = {
       name: "User Page",
       components: { default: User }
     },
-    {
-      path: "timeline",
-      name: "Timeline Page",
-      components: { default: TimeLine }
-    },
-    {
-      path: "rtl",
-      name: "وحة القيادة",
-      meta: {
-        rtlActive: true
-      },
-      components: { default: RtlSupport }
-    }
+    // {
+    //   path: "timeline",
+    //   name: "Timeline Page",
+    //   components: { default: TimeLine }
+    // },
+    // {
+    //   path: "rtl",
+    //   name: "وحة القيادة",
+    //   meta: {
+    //     rtlActive: true
+    //   },
+    //   components: { default: RtlSupport }
+    // },
+    // {
+    //   path: "calendar",
+    //   name: "Calendar",
+    //   components: { default: Calendar }
+    // },
+    // {
+    //   path: "charts",
+    //   name: "Charts",
+    //   components: { default: Charts }
+    // },
+    // {
+    //   path: "widgets",
+    //   name: "Widgets",
+    //   components: { default: Widgets }
+    // }
   ]
 };
 
@@ -234,24 +278,21 @@ let authPages = {
         middleware: [guest]
       }
     },
-    {
-      path: "/pricing",
-      name: "Pricing",
-      component: Pricing
-    },
-    {
-      path: "/lock",
-      name: "Lock",
-      component: Lock
-    }
+    // {
+    //   path: "/pricing",
+    //   name: "Pricing",
+    //   component: Pricing
+    // },
+    // {
+    //   path: "/lock",
+    //   name: "Lock",
+    //   component: Lock
+    // }
   ]
 };
 
 const routes = [
-  // {
-  //   path: "/", name: "Welcome",
-  //   components: { default: Welcome }
-  // },
+  AccountMenu,
   componentsMenu,
   formsMenu,
   tablesMenu,
@@ -267,21 +308,7 @@ const routes = [
         name: "Dashboard",
         components: { default: Dashboard }
       },
-      {
-        path: "calendar",
-        name: "Calendar",
-        components: { default: Calendar }
-      },
-      {
-        path: "charts",
-        name: "Charts",
-        components: { default: Charts }
-      },
-      {
-        path: "widgets",
-        name: "Widgets",
-        components: { default: Widgets }
-      }
+
     ]
   }
 ];
