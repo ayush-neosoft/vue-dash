@@ -13,7 +13,7 @@ import Welcome from "@/pages/Dashboard/Pages/Welcome.vue";
 import Login from "@/pages/Dashboard/Pages/Login.vue";
 import Register from "@/pages/Dashboard/Pages/Register.vue";
 import RegisterLicense from "@/pages/Dashboard/Pages/RegisterLicense.vue";
-import DashboardPlan from "@/pages/Dashboard/Pages/DashboardPlan.vue";
+import DashboardPlan from "@/pages/Dashboard/Layout/DashboardPlan.vue";
 import Lock from "@/pages/Dashboard/Pages/Lock.vue";
 
 // Components pages
@@ -138,17 +138,19 @@ let AccountMenu = {
     {
       path: "transfer-license", name: "Transfer License",
       component: () => import('@/pages/Dashboard/Account/TransferLicense')
-    },
-    // {
-    //   path: "validation",
-    //   name: "Validation Forms",
-    //   components: { default: ValidationForms }
-    // },
-    // {
-    //   path: "wizard",
-    //   name: "Wizard",
-    //   components: { default: Wizard }
-    // }
+    }
+  ]
+};
+
+let DashboardPlanView = {
+  path: "/dashboard-plan",
+  component: DashboardPlan,
+  name: "DashboardPlan",
+  children: [
+    {
+      path: "/", name: "DashboardPlan",
+      component: () => import('@/pages/Dashboard/DashboardPlan/index')
+    }
   ]
 };
 
@@ -292,6 +294,7 @@ let authPages = {
 
 const routes = [
   AccountMenu,
+  DashboardPlanView,
   componentsMenu,
   formsMenu,
   tablesMenu,

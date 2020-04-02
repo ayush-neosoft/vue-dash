@@ -239,6 +239,7 @@
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>
+
       <fixed-plugin
         :color.sync="sidebarBackground"
         :colorBg.sync="sidebarBackgroundColor"
@@ -253,6 +254,7 @@
         @click="toggleSidebar"
       >
         <zoom-center-transition :duration="200" mode="out-in">
+          <!-- your content here -->
           <router-view></router-view>
         </zoom-center-transition>
       </div>
@@ -260,7 +262,6 @@
     </div>
   </div>
 </template>
-
 <script>
 /* eslint-disable no-new */
 import PerfectScrollbar from "perfect-scrollbar";
