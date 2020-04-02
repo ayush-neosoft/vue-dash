@@ -21,8 +21,6 @@ import Pricing from "@/pages/Dashboard/Pages/Pricing.vue";
 import TimeLine from "@/pages/Dashboard/Pages/TimeLinePage.vue";
 import RtlSupport from "@/pages/Dashboard/Pages/RtlSupport.vue";
 import Welcome from "@/pages/Dashboard/Pages/Welcome.vue";
-import Login from "@/pages/Dashboard/Pages/Login.vue";
-import Register from "@/pages/Dashboard/Pages/Register.vue";
 import Lock from "@/pages/Dashboard/Pages/Lock.vue";
 
 // Components pages
@@ -267,20 +265,18 @@ let authPages = {
       component: Welcome
     },
     {
-      path: "/login",
-      name: "Login",
-      component: Login,
-      meta: {
-        middleware: [guest]
-      }
+      path: "/login", name: "Login",
+      component: () => import('@/pages/Auth/Login')
+      // meta: {
+      //   middleware: [guest]
+      // }
     },
     {
-      path: "/register",
-      name: "Register",
-      component: Register,
-      meta: {
-        middleware: [guest]
-      }
+      path: "/register", name: "Register",
+      component: () => import('@/pages/Auth/Register')
+      // meta: {
+      //   middleware: [guest]
+      // }
     },
     // {
     //   path: "/pricing",
