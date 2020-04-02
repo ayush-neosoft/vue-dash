@@ -54,6 +54,8 @@
   </component>
 </template>
 <script>
+
+
 export default {
   name: "sidebar-item",
   props: {

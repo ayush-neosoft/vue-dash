@@ -10,6 +10,7 @@ import GlobalSalesTable from "./Tables/GlobalSalesTable.vue";
 
 import PricingCard from "./Cards/PricingCard.vue";
 import SignupCard from "./Cards/SignupCard.vue";
+import RangeSlider from "./Rangeslider/RangeSlider.vue";
 import LockCard from "./Cards/LockCard.vue";
 import LoginCard from "./Cards/LoginCard.vue";
 import StatsCard from "./Cards/StatsCard.vue";
@@ -43,6 +44,7 @@ export {
   LockCard,
   PricingCard,
   SignupCard,
+  RangeSlider,
   TestimonialCard,
   StatsCard,
   LoginCard,

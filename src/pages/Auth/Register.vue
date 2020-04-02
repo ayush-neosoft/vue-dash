@@ -1,4 +1,4 @@
-<template>
+`<template>
   <div class="md-layout text-center">
     <div
       class="md-layout-item md-size-33 md-medium-size-50 md-small-size-70 md-xsmall-size-100"
@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     doRegister() {
-      this.$router.push({ name: 'Checkout' });
+      this.$router.push({ name: "Checkout" });
       // Auth.register({ email: this.email, password: this.password })
       //   .then(response => {
       //     localStorage.setItem("token", response.data.access_token); // set token

@@ -1,14 +1,3 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import store from "../store";
-
-import guest from "./middleware/guest";
-import auth from "./middleware/auth";
-import isSubscribed from "./middleware/isSubscribed";
-import middlewarePipeline from "./middlewarePipeline";
-
-Vue.use(VueRouter);
-
 import DashboardLayout from "@/pages/Dashboard/Layout/DashboardLayout.vue";
 import AuthLayout from "@/pages/Dashboard/Pages/AuthLayout.vue";
 
@@ -17,11 +6,9 @@ import Dashboard from "@/pages/Dashboard/Dashboard.vue";
 
 // Pages
 import User from "@/pages/Dashboard/Pages/UserProfile.vue";
-import Pricing from "@/pages/Dashboard/Pages/Pricing.vue";
-import TimeLine from "@/pages/Dashboard/Pages/TimeLinePage.vue";
-import RtlSupport from "@/pages/Dashboard/Pages/RtlSupport.vue";
 import Welcome from "@/pages/Dashboard/Pages/Welcome.vue";
-import Lock from "@/pages/Dashboard/Pages/Lock.vue";
+import RegisterLicense from "@/pages/Dashboard/Pages/RegisterLicense.vue";
+import DashboardPlan from "@/pages/Dashboard/Layout/DashboardPlan.vue";
 
 // Components pages
 import Buttons from "@/pages/Dashboard/Components/Buttons.vue";
@@ -145,17 +132,19 @@ let AccountMenu = {
     {
       path: "transfer-license", name: "Transfer License",
       component: () => import('@/pages/Dashboard/Account/TransferLicense')
-    },
-    // {
-    //   path: "validation",
-    //   name: "Validation Forms",
-    //   components: { default: ValidationForms }
-    // },
-    // {
-    //   path: "wizard",
-    //   name: "Wizard",
-    //   components: { default: Wizard }
-    // }
+    }
+  ]
+};
+
+let DashboardPlanView = {
+  path: "/dashboard-plan",
+  component: DashboardPlan,
+  name: "DashboardPlan",
+  children: [
+    {
+      path: "/", name: "DashboardPlan",
+      component: () => import('@/pages/Dashboard/DashboardPlan/index')
+    }
   ]
 };
 
@@ -273,6 +262,16 @@ let authPages = {
       //   middleware: [guest]
       // }
     },
+    {
+      path: "/checkout",
+      name: "RegisterLicense",
+      component: RegisterLicense
+    },
+    {
+      path: "/dashboard-plan",
+      name: "DashboardPlan",
+      component: DashboardPlan
+    }
     // {
     //   path: "/pricing",
     //   name: "Pricing",
@@ -288,6 +287,7 @@ let authPages = {
 
 const routes = [
   AccountMenu,
+  DashboardPlanView,
   componentsMenu,
   formsMenu,
   tablesMenu,
@@ -312,34 +312,4 @@ const routes = [
   }
 ];
 
-const router = new VueRouter({
-  routes,
-  scrollBehavior: to => {
-    if (to.hash) {
-      return { selector: to.hash };
-    } else {
-      return { x: 0, y: 0 };
-    }
-  },
-  linkExactActiveClass: "nav-item active"
-});
-
-router.beforeEach((to, from, next) => {
-  if (!to.meta.middleware) {
-    return next();
-  }
-  const middleware = to.meta.middleware;
-
-  const context = {
-    to,
-    from,
-    next,
-    store
-  };
-  return middleware[0]({
-    ...context,
-    next: middlewarePipeline(context, middleware, 1)
-  });
-});
-
-export default router;
+export default routes;
