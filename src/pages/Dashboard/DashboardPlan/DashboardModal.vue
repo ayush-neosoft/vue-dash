@@ -1,6 +1,6 @@
 <template>
   <div>
-    <modal v-if="!status" @close="closeModal">
+    <modal v-if="status" @close="closeModal">
       <template slot="header">
         <h4 class="modal-title"><strong>Created a new Plan</strong></h4>
         <md-button
@@ -43,12 +43,12 @@
       </template>
     </modal>
 
-    <modal v-if="modal2" @close="closeModal">
+    <modal v-if="modal2" @close="closeModal2">
       <template slot="header">
         <h4 class="modal-title"><strong>Created a new Plan 2</strong></h4>
         <md-button
           class="md-simple md-just-icon md-round modal-default-button"
-          @click="closeModal"
+          @click="closeModal2"
         >
           <md-icon>clear</md-icon>
         </md-button>
@@ -77,7 +77,9 @@
         </md-field>
       </template>
       <template slot="footer">
-        <md-button class="md-success md-simple">Create Annual Plan</md-button>
+        <md-button class="md-success md-simple" @click="closeModal2"
+          >Create Annual Plan</md-button
+        >
       </template>
     </modal>
   </div>
@@ -104,6 +106,9 @@ export default {
     openModal2: function() {
       this.status = false;
       this.modal2 = true;
+    },
+    closeModal2: function() {
+      this.modal2 = false;
     }
   }
 };
