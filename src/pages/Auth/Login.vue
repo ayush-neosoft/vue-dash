@@ -61,6 +61,21 @@ export default {
       email: null,
       password: null
     };
+  },
+  methods: {
+    doLogin() {
+      this.$router.push({ name: "Account" });
+      // Auth.login({ email: this.email, password: this.password })
+      //   .then(response => {
+      //     localStorage.setItem("token", response.data.access_token); // set token
+      //     this.$store.dispatch("auth_vuex/set_auth", true);
+      //     this.$store.dispatch("auth_vuex/set_user", response.data.user); // set user
+      //     this.$router.push("/"); // redirect user
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   });
+    }
   }
 };
 </script>

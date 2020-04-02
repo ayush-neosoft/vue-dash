@@ -1,4 +1,4 @@
-<template>
+`<template>
   <div class="md-layout text-center">
     <div
       class="md-layout-item md-size-33 md-medium-size-50 md-small-size-70 md-xsmall-size-100"
@@ -68,16 +68,17 @@ export default {
   },
   methods: {
     doRegister() {
-      Auth.register({ email: this.email, password: this.password })
-        .then(response => {
-          localStorage.setItem("token", response.data.access_token); // set token
-          this.$store.dispatch("auth_vuex/set_auth", true);
-          this.$store.dispatch("auth_vuex/set_user", response.data.user); // set user
-          this.$router.push("/"); // redirect user
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      this.$router.push({ name: "Checkout" });
+      // Auth.register({ email: this.email, password: this.password })
+      //   .then(response => {
+      //     localStorage.setItem("token", response.data.access_token); // set token
+      //     this.$store.dispatch("auth_vuex/set_auth", true);
+      //     this.$store.dispatch("auth_vuex/set_user", response.data.user); // set user
+      //     this.$router.push("/"); // redirect user
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   });
     }
   }
 };
