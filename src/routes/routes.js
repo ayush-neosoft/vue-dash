@@ -6,15 +6,9 @@ import Dashboard from "@/pages/Dashboard/Dashboard.vue";
 
 // Pages
 import User from "@/pages/Dashboard/Pages/UserProfile.vue";
-import Pricing from "@/pages/Dashboard/Pages/Pricing.vue";
-import TimeLine from "@/pages/Dashboard/Pages/TimeLinePage.vue";
-import RtlSupport from "@/pages/Dashboard/Pages/RtlSupport.vue";
 import Welcome from "@/pages/Dashboard/Pages/Welcome.vue";
-import Login from "@/pages/Dashboard/Pages/Login.vue";
-import Register from "@/pages/Dashboard/Pages/Register.vue";
 import RegisterLicense from "@/pages/Dashboard/Pages/RegisterLicense.vue";
 import DashboardPlan from "@/pages/Dashboard/Layout/DashboardPlan.vue";
-import Lock from "@/pages/Dashboard/Pages/Lock.vue";
 
 // Components pages
 import Buttons from "@/pages/Dashboard/Components/Buttons.vue";
@@ -260,14 +254,18 @@ let authPages = {
       component: Welcome
     },
     {
-      path: "/login",
-      name: "Login",
-      component: Login
+      path: "/login", name: "Login",
+      component: () => import('@/pages/Auth/Login')
+      // meta: {
+      //   middleware: [guest]
+      // }
     },
     {
-      path: "/register",
-      name: "Register",
-      component: Register
+      path: "/register", name: "Register",
+      component: () => import('@/pages/Auth/Register')
+      // meta: {
+      //   middleware: [guest]
+      // }
     },
     {
       path: "/checkout",
