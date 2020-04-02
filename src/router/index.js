@@ -13,7 +13,7 @@ import DashboardLayout from "@/pages/Dashboard/Layout/DashboardLayout.vue";
 import AuthLayout from "@/pages/Dashboard/Pages/AuthLayout.vue";
 
 // Dashboard pages
-import Dashboard from "@/pages/Dashboard/Dashboard.vue";
+import Dashboard from "@/pages/Dashboard/Index.vue";
 
 // Pages
 import User from "@/pages/Dashboard/Pages/UserProfile.vue";
@@ -269,6 +269,13 @@ let authPages = {
     {
       path: "/register", name: "Register",
       component: () => import('@/pages/Auth/Register')
+      // meta: {
+      //   middleware: [guest]
+      // }
+    },
+    {
+      path: "/checkout", name: "Checkout",
+      component: () => import('@/pages/Dashboard/Pages/Checkout')
       // meta: {
       //   middleware: [guest]
       // }
