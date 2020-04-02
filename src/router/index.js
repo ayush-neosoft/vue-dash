@@ -182,7 +182,6 @@ let tablesMenu = {
     }
   ]
 };
-
 let mapsMenu = {
   path: "/maps",
   component: DashboardLayout,
@@ -223,6 +222,7 @@ let pagesMenu = {
       name: "User Page",
       components: { default: User }
     },
+
     // {
     //   path: "timeline",
     //   name: "Timeline Page",
@@ -255,15 +255,10 @@ let pagesMenu = {
 };
 
 let authPages = {
-  path: "/",
+  path: "/auth",
   component: AuthLayout,
   name: "Authentication",
   children: [
-    {
-      path: "/",
-      name: "Welcome",
-      component: Welcome
-    },
     {
       path: "/login", name: "Login",
       component: () => import('@/pages/Auth/Login')
@@ -304,9 +299,13 @@ const routes = [
     component: DashboardLayout,
     children: [
       {
-        path: "dashboard",
-        name: "Dashboard",
+        path: "dashboard", name: "Dashboard",
         components: { default: Dashboard }
+      },
+      {
+        path: "notifications",
+        name: "Notifications",
+        component: () => import('@/pages/Dashboard/Notifications')
       },
 
     ]
